@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#0F172A">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status: Disconnected"
+        android:textColor="#38BDF8"
+        android:textSize="16sp"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etHostIp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Host IP (e.g. 192.168.1.5)"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#94A3B8"
+            android:inputType="textUri"
+            android:text="127.0.0.1" />
+
+        <EditText
+            android:id="@+id/etPin"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="PIN (6 digits)"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#94A3B8"
+            android:inputType="number"
+            android:maxLength="6"
+            android:text="123456" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etFingerprint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SHA-256 Fingerprint (Optional TOFU pin)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#94A3B8"
+        android:textSize="12sp"
+        android:inputType="text"
+        android:text="bedeb99a3c65fafe451febfbca41c41e6f8be93949e517c81ffeb4387bc8c88b"
+        android:layout_marginTop="4dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Connect"
+            android:backgroundTint="#0284C7" />
+
+        <Button
+            android:id="@+id/btnDisconnect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disconnect"
+            android:enabled="false"
+            android:backgroundTint="#EF4444" />
+    </LinearLayout>
+
+    <!-- Phase 3.3 Touchpad & Gesture Controls Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp"
+        android:layout_marginTop="4dp"
+        android:background="#1E293B">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvSensitivityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sensitivity: 1.0x"
+                android:textColor="#E2E8F0"
+                android:textSize="12sp"
+                android:paddingEnd="8dp" />
+
+            <SeekBar
+                android:id="@+id/sbSensitivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="25"
+                android:progress="5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+
+            <CheckBox
+                android:id="@+id/cbNaturalScroll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Natural Scroll"
+                android:textColor="#CBD5E1"
+                android:textSize="11sp" />
+
+            <CheckBox
+                android:id="@+id/cbLeftHanded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Left-Handed"
+                android:textColor="#CBD5E1"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Phase 3.5 Keyboard, Modifiers & Function Keys Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="4dp"
+        android:background="#1E293B"
+        android:padding="4dp">
+
+        <!-- Modifiers & Keyboard Toggle Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnToggleKeyboard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.4"
+                android:text="⌨ IME"
+                android:textSize="11sp"
+                android:padding="0dp"
+                android:backgroundTint="#0284C7" />
+
+            <Button
+                android:id="@+id/btnModCtrl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:text="Ctrl"
+                android:textSize="11sp"
+                android:padding="0dp"
+                android:backgroundTint="#334155" />
+
+            <Button
+                android:id="@+id/btnModAlt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:text="Alt"
+                android:textSize="11sp"
+                android:padding="0dp"
+                android:backgroundTint="#334155" />
+
+            <Button
+                android:id="@+id/btnModShift"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:text="Shift"
+                android:textSize="11sp"
+                android:padding="0dp"
+                android:backgroundTint="#334155" />
+
+            <Button
+                android:id="@+id/btnModWin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:text="Win"
+                android:textSize="11sp"
+                android:padding="0dp"
+                android:backgroundTint="#334155" />
+        </LinearLayout>
+
+        <!-- Function & Control Keys Row -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="2dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnKeyEsc"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="Esc"
+                    android:textSize="10sp"
+                    android:padding="0dp"
+                    android:backgroundTint="#475569" />
+
+                <Button
+                    android:id="@+id/btnKeyTab"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:text="Tab"
+                    android:textSize="10sp"
+                    android:padding="0dp"
+                    android:backgroundTint="#475569" />
+
+                <Button
+                    android:id="@+id/btnKeyEnter"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:text="Enter"
+                    android:textSize="10sp"
+                    android:padding="0dp"
+                    android:backgroundTint="#475569" />
+
+                <Button
+                    android:id="@+id/btnKeyBackspace"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:text="⌫"
+                    android:textSize="11sp"
+                    android:padding="0dp"
+                    android:backgroundTint="#475569" />
+
+                <Button
+                    android:id="@+id/btnKeyDel"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:text="Del"
+                    android:textSize="10sp"
+                    android:padding="0dp"
+                    android:backgroundTint="#475569" />
+
+                <Button
+                    android:id="@+id/btnKeyF5"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:text="F5"
+                    android:textSize="10sp"
+                    android:padding="0dp"
+                    android:backgroundTint="#475569" />
+
+                <Button
+                    android:id="@+id/btnKeyF11"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:text="F11"
+                    android:textSize="10sp"
+                    android:padding="0dp"
+                    android:backgroundTint="#475569" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Invisible IME Capture Buffer for Soft Keyboard & Voice Dictation -->
+    <EditText
+        android:id="@+id/etImeBuffer"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:alpha="0"
+        android:inputType="textMultiLine"
+        android:importantForAutofill="no" />
+
+    <!-- Trackpad Surface -->
+    <View
+        android:id="@+id/touchpadView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#1E293B" />
+
+    <!-- Click Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnLeftClick"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Left Click"
+            android:textSize="18sp"
+            android:backgroundTint="#334155" />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btnRightClick"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Right Click"
+            android:textSize="18sp"
+            android:backgroundTint="#334155" />
+    </LinearLayout>
+
+</LinearLayout>
